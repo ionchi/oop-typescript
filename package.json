@@ -1,0 +1,23 @@
+{
+  "name": "oop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc --build",
+    "start": "node ./dist",
+    "dev": "ts-node-dev --pretty --transpile-only src/index.ts dev",
+    "lint": "tsc --noEmit && eslint \"**/*.ts\" --quiet --fix"
+  },
+  "keywords": [],
+  "author": "ionchi <ion.chiriac@live.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "18.16.3",
+    "@typescript-eslint/eslint-plugin": "5.59.2",
+    "@typescript-eslint/parser": "5.59.2",
+    "eslint": "8.39.0",
+    "ts-node-dev": "2.0.0",
+    "typescript": "5.0.4"
+  }
+}
