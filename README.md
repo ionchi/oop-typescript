@@ -23,7 +23,9 @@ It is a good starting point to understand the basic concepts of OOP.
 **One of the problems to solve**:
 `Game` and `DungeonObjects` classes are too big and have too many responsibilities.
 This is a problem because it makes the code difficult to maintain and extend.
+
 ---
+
 Starting from version 1, add functionalities to the game:
 
 - Increase code cohesion and reduce code coupling: create a new class `DungeonMap` that will handle the creation of the map, removing this responsibility from the `Game` class.
