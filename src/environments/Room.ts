@@ -1,4 +1,4 @@
-import { Tool } from './Tool';
+import { Tool } from '../tools/Tool';
 
 export class Room {
   private static MAX_DIRECTIONS = 4;
@@ -66,7 +66,7 @@ export class Room {
   public hasTool(toolName: string): boolean {
     let found = false;
     for (let i = 0; i < this.toolsNumber; i++) {
-      if (this.tools[i].getName() === toolName) {
+      if (this.tools[i]?.getName() === toolName) {
         found = true;
       }
     }
@@ -84,24 +84,36 @@ export class Room {
   }
 
   public removeTool(toolName: string): boolean {
-    // TODO
-    console.log(toolName);
-    return false;
+    let removed = false;
+    for (let i = 0; i < this.toolsNumber; i++) {
+      if (this.tools[i]?.getName() === toolName) {
+        this.tools[i] = null;
+        removed = true;
+      }
+    }
+    return removed;
   }
 
   public getDirections(): string[] {
     return this.directions;
   }
 
+  public getAvailableDirections(): string[] {
+    return this.directions.filter(el => !!el);
+  }
+
+  public getAvailableTools(): Tool[] {
+    return this.tools.filter(el => !!el?.getName());
+  }
+
   public getDescription(): string {
-    let description = '######## \n';
-    description += `Room: ${this.name}\n`;
-    description += `Available directions: ${this.directions.filter(el =>
-      !!el).join(' - ')}\n`;
-    const availableTools = this.tools.filter(el => !!el.getName());
+    let description = '#####\n';
+    description += `🛏️ Room: ${this.name}\n`;
+    description += `Available directions: ${this.getAvailableDirections().join(' - ')}\n`;
+    const availableTools = this.getAvailableTools();
     description += `Tools in the room: ${availableTools.length ? availableTools.map(el =>
         el.getDescription()) : '-'}\n`;
-    description += '########';
+    description += '#####';
     return description;
   }
 }

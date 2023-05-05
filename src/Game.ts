@@ -1,50 +1,18 @@
-import { Room } from './Room';
-import { Tool } from './Tool';
+import { Room } from './environments/Room';
+import { DungeonMap } from './environments/DungeonMap';
+import { Player } from './player/Player';
+
 export class Game {
-  private static readonly INIT_POINTS = 20;
+  private dungeonMap: DungeonMap;
   private currentRoom: Room;
-  private winningRoom: Room;
+  private readonly player: Player;
   private gameOver: boolean;
-  private points: number;
 
   constructor() {
-    this.createRooms();
+    this.dungeonMap = new DungeonMap();
+    this.currentRoom = this.dungeonMap.getInitRoom();
+    this.player = new Player();
     this.gameOver = false;
-    this.points = Game.INIT_POINTS;
-  }
-
-  private createRooms(): void {
-    const lantern = new Tool('lantern', 3);
-    const bone = new Tool('bone', 1);
-
-    const hall = new Room('hall');
-    const room1 = new Room('room N1');
-    const room2 = new Room('room N2');
-    const lab = new Room('lab');
-    const library = new Room('library');
-
-    hall.setAdjacentRoom('north', library);
-    hall.setAdjacentRoom('east', room1);
-    hall.setAdjacentRoom('south', room2);
-    hall.setAdjacentRoom('west', lab);
-    room1.setAdjacentRoom('east', lab);
-    room1.setAdjacentRoom('west', hall);
-    room2.setAdjacentRoom('north', hall);
-    room2.setAdjacentRoom('east', room1);
-    room2.setAdjacentRoom('west', lab);
-    lab.setAdjacentRoom('east', hall);
-    lab.setAdjacentRoom('west', room1);
-    library.setAdjacentRoom('south', hall);
-
-    room2.addTool(lantern);
-    hall.addTool(bone);
-
-    this.currentRoom = hall;
-    this.winningRoom = library;
-  }
-
-  public getWinningRoom(): Room {
-    return this.winningRoom;
   }
 
   public getCurrentRoom(): Room {
@@ -56,22 +24,18 @@ export class Game {
   }
 
   public isWon(): boolean {
-    return this.currentRoom === this.winningRoom;
+    return this.currentRoom.getName() === this.dungeonMap.getWinningRoom().getName();
   }
 
   public isGameOver(): boolean {
-    return this.gameOver || this.isWon() || this.points === 0;
+    return this.gameOver || this.isWon() || this.player.getPoints() === 0;
   }
 
   public setGameOver(): void {
     this.gameOver = true;
   }
 
-  public getPoints(): number {
-    return this.points;
-  }
-
-  public setPoints(points: number): void {
-    this.points = points;
+  public getPlayer(): Player {
+    return this.player;
   }
 }
