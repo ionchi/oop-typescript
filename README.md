@@ -51,3 +51,34 @@ Starting from version 1, add functionalities to the game:
   - `readInput()` (returns a string)
 - Add unit tests. At least 3 (if makes sense) unit tests for `Room`, `Game`, `Player`, `Backpack` and `DungeonMap` classes.
 
+### Version 3
+**One of the problems to solve**:
+`GameMain` class is handling the logic of the commands and actions of the game.
+This is a problem because it's difficult to add new commands and the class could become too big.
+
+---
+
+Starting from version 2, add functionalities to the game:
+
+- Refactor the code extracting the logic of the commands and actions of the game:
+  - Create a `Command` interface with a `execute(game: Game)` method.
+  - Create a `CommandFactory` interface and a `CommandFactoryAccordion` that will handle the creation of the commands (for now if-else statements).
+  - Create a class for every command the game supports.
+  - Write unit tests for the new classes.
+- Implement `IO` interface, from which `IOConsole` class will inherit and create that class only from the program's `main()` method. This way there will be more flexibility in the future to change the input/output of the game.
+- Add a new room in the game, the `MagicRoom`, with the following characteristics:
+  - After N times the player drops an object in the room, the room will behave magically and will reverse the object name and double up the object weight.
+  - The room will have a `magicCounter` attribute that will keep track of the number of times the player drops an object in the room.
+  - The room will have a `magicThreshold` attribute that will be the number of times the player has to drop an object in the room before it behaves magically.
+  - When the room doesn't behave magically, it will behave like a normal room.
+- Add a new room in the game, the `DarkRoom`, with the following characteristics:
+  - If in the room there is a `Torch` object, the room will behave normally, otherwise it will be dark and the room description will be different.
+  - The room will have a `lightObject` string attribute that will be the name of the object that will light up the room.
+  - The `getDescription()` method will return a different description if the room is dark or not.
+  - The `lightObject` attribute will be set in the constructor.
+- Add a new room in the game, the `BlockedRoom`, with the following characteristics:
+  - The room will have a `keyObject` string attribute that will be the name of the object that will unlock the blocked direction in the room.
+  - The room will have a `blockedDirection` string attribute that will block the player from going in that direction if not in possession of the `keyObject`.
+  - The `getDescription()` method will return a different description if the room is blocked or not.
+  - The `blockedDirection` and the `keyObject` attributes will be set in the constructor.
+- Write unit tests for the new rooms.

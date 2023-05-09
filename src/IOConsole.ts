@@ -1,7 +1,8 @@
 import * as readline from 'node:readline/promises';
 import * as process from 'process';
+import { IO } from './IO';
 
-export class IOConsole {
+export class IOConsole implements IO {
   private prompt: readline.Interface;
 
   constructor() {

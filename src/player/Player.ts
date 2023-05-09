@@ -25,6 +25,10 @@ export class Player {
     this.points = points;
   }
 
+  public isAlive(): boolean {
+    return this.points > 0;
+  }
+
   public getBackpack(): Backpack {
     return this.backpack;
   }

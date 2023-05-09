@@ -1,4 +1,11 @@
 import { GameMain } from './GameMain';
+import { IOConsole } from './IOConsole';
 
-const theGame = new GameMain();
-theGame.play().then(() => {});
+function main() {
+  const logger = new IOConsole();
+  const theGame = new GameMain(logger);
+
+  theGame.play().then(() => {});
+}
+
+main();
