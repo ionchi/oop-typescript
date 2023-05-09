@@ -13,7 +13,7 @@ export class IOConsole implements IO {
   }
 
   public showMessage(message: string): void {
-    console.log(`${message}`);
+    console.log(message);
   }
 
   public async readInput(question: string): Promise<string> {
@@ -23,6 +23,6 @@ export class IOConsole implements IO {
 
   public close(): void {
     this.prompt.close();
-    process.exit(1);
+    process.exit(0);
   }
 }

@@ -1,9 +1,10 @@
 import { Command } from './Command';
+import { COMMAND_NAME, TEXT_MESSAGE } from '../static-data';
 
 export class InvalidCommand implements Command {
-  private readonly name: string = 'invalid';
+  private readonly name: string = COMMAND_NAME.invalid;
   public execute(): void {
-    console.log('🤷‍ I don\'t understand that. Type \'help\' to see the available commands.');
+    console.log(TEXT_MESSAGE.invalidCommand);
   }
 
   public setParameter(): void {

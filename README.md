@@ -72,13 +72,16 @@ Starting from version 2, add functionalities to the game:
   - The room will have a `magicThreshold` attribute that will be the number of times the player has to drop an object in the room before it behaves magically.
   - When the room doesn't behave magically, it will behave like a normal room.
 - Add a new room in the game, the `DarkRoom`, with the following characteristics:
-  - If in the room there is a `Torch` object, the room will behave normally, otherwise it will be dark and the room description will be different.
-  - The room will have a `lightObject` string attribute that will be the name of the object that will light up the room.
+  - The room will have a `lightTool` string attribute that will be the name of the object that will light up the room.
+  - If in the room there is a `lightTool` object, the room will behave normally, otherwise it will be dark and the room description will be different.
   - The `getDescription()` method will return a different description if the room is dark or not.
-  - The `lightObject` attribute will be set in the constructor.
+  - The `lightTool` attribute will be set in the constructor.
 - Add a new room in the game, the `BlockedRoom`, with the following characteristics:
-  - The room will have a `keyObject` string attribute that will be the name of the object that will unlock the blocked direction in the room.
-  - The room will have a `blockedDirection` string attribute that will block the player from going in that direction if not in possession of the `keyObject`.
+  - The room will have a `unlockTool` string attribute that will be the name of the object that will unlock the blocked direction in the room.
+  - The room will have a `blockedDirection` string attribute that will block the player from going in that direction if not in possession of the `unlockTool`.
   - The `getDescription()` method will return a different description if the room is blocked or not.
-  - The `blockedDirection` and the `keyObject` attributes will be set in the constructor.
+  - The `getAdjacentRoom()` method in the `blockedDirection` will return a reference to self if the `unlockTool` is not in the room.
+  - The `blockedDirection` and the `unlockTool` attributes will be set in the constructor.
+- All the rooms should extend the basic `Room` class.
 - Write unit tests for the new rooms.
+- Add `IOSimulator` class that implements `IO` interface. It should take a list of instructions and automatically execute them without user input. It could be useful for acceptance testing.

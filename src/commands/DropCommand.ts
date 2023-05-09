@@ -1,16 +1,17 @@
 import { Command } from './Command';
 import { Game } from '../Game';
+import { COMMAND_NAME, TEXT_MESSAGE } from '../static-data';
 
 export class DropCommand implements Command {
   private item: string;
-  private readonly name: string = 'drop';
+  private readonly name: string = COMMAND_NAME.drop;
 
   public execute(game: Game): void {
     if (this.item) {
       const toolToDrop = game.getPlayer().getBackpack().getTools()
         .find((el) => el.getName() === this.item);
       if (!toolToDrop) {
-        console.log('⚠️ Invalid tool!');
+        console.log(TEXT_MESSAGE.invalidTool);
         return;
       }
       game.getPlayer().getBackpack().removeTool(toolToDrop.getName());
@@ -18,7 +19,7 @@ export class DropCommand implements Command {
       console.log(`ℹ️ You dropped ${toolToDrop.getDescription()}`);
       console.log(game.getPlayer().getBackpack().getDescription());
     } else {
-      console.log('⚠️ Invalid tool!');
+      console.log(TEXT_MESSAGE.invalidTool);
     }
   }
 

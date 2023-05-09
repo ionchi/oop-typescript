@@ -7,6 +7,7 @@ import { QuitCommand } from './QuitCommand';
 import { PickCommand } from './PickCommand';
 import { DropCommand } from './DropCommand';
 import { InvalidCommand } from './InvalidCommand';
+import { COMMAND_NAME } from '../static-data';
 
 export class CommandFactoryAccordion implements CommandFactory {
   public createCommand(instruction: string): Command {
@@ -15,17 +16,17 @@ export class CommandFactoryAccordion implements CommandFactory {
 
     let command;
 
-    if (commandName === 'move') {
+    if (commandName === COMMAND_NAME.move) {
       command = new MoveCommand();
-    } else if (commandName === 'help') {
+    } else if (commandName === COMMAND_NAME.help) {
       command = new HelpCommand();
-    } else if (commandName === 'look') {
+    } else if (commandName === COMMAND_NAME.look) {
       command = new LookCommand();
-    } else if (commandName === 'pick') {
+    } else if (commandName === COMMAND_NAME.pick) {
       command = new PickCommand();
-    } else if (commandName === 'drop') {
+    } else if (commandName === COMMAND_NAME.drop) {
       command = new DropCommand();
-    } else if (commandName === 'quit') {
+    } else if (commandName === COMMAND_NAME.quit) {
       command = new QuitCommand();
     } else {
       command = new InvalidCommand();

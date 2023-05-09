@@ -1,8 +1,9 @@
 import { Command } from './Command';
 import { Game } from '../Game';
+import { COMMAND_NAME, TEXT_MESSAGE } from '../static-data';
 
 export class PickCommand implements Command {
-  public readonly name = 'pick';
+  public readonly name = COMMAND_NAME.pick;
   private item: string;
 
   public execute(game: Game): void {
@@ -14,7 +15,7 @@ export class PickCommand implements Command {
       console.log(`ℹ️ You picked ${tool.getDescription()}`);
       console.log(game.getPlayer().getBackpack().getDescription());
     } else {
-      console.log('⚠️ Invalid tool!');
+      console.log(TEXT_MESSAGE.invalidTool);
     }
   }
 

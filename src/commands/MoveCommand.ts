@@ -1,8 +1,9 @@
 import { Command } from './Command';
 import { Game } from '../Game';
+import { COMMAND_NAME, TEXT_MESSAGE } from '../static-data';
 
 export class MoveCommand implements Command {
-  private readonly name = 'move';
+  private readonly name = COMMAND_NAME.move;
   private direction: string;
 
   public execute(game: Game): void {
@@ -10,14 +11,14 @@ export class MoveCommand implements Command {
     let nextRoom = null;
 
     if (!this.direction) {
-      console.log('⚠️ Invalid direction!');
+      console.log(TEXT_MESSAGE.invalidDirection);
       return;
     }
 
     nextRoom = currentRoom.getAdjacentRoom(this.direction);
 
     if (!nextRoom) {
-      console.log('⚠️ Non existing direction!');
+      console.log(TEXT_MESSAGE.invalidDirection);
       return;
     }
 
