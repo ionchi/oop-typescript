@@ -2,7 +2,7 @@ import { Command } from './Command';
 import { Game } from '../Game';
 import { COMMAND_NAME } from '../static-data';
 
-export class LookCommand implements Command {
+export default class LookCommand implements Command {
   private readonly name = COMMAND_NAME.look;
   public execute(game: Game): void {
     console.log(game.getCurrentRoom().getDescription());

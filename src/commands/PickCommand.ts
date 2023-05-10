@@ -2,7 +2,7 @@ import { Command } from './Command';
 import { Game } from '../Game';
 import { COMMAND_NAME, TEXT_MESSAGE } from '../static-data';
 
-export class PickCommand implements Command {
+export default class PickCommand implements Command {
   public readonly name = COMMAND_NAME.pick;
   private item: string;
 

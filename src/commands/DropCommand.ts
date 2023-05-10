@@ -2,7 +2,7 @@ import { Command } from './Command';
 import { Game } from '../Game';
 import { COMMAND_NAME, TEXT_MESSAGE } from '../static-data';
 
-export class DropCommand implements Command {
+export default class DropCommand implements Command {
   private item: string;
   private readonly name: string = COMMAND_NAME.drop;
 

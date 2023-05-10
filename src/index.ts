@@ -1,20 +1,21 @@
 import { GameMain } from './GameMain';
-import { IOSimulator } from './IOSimulator';
+// import { IOSimulator } from './IOSimulator';
+import { IOConsole } from './IOConsole';
 
 function main() {
-  const simulatorWinningInstructions = [
-    'move south',
-    'pick lantern',
-    'move north',
-    'move east',
-    'drop lantern',
-    'pick key',
-    'move west',
-    'drop key',
-    'move north'
-  ];
+  // const simulatorWinningInstructions = [
+  //   'move south',
+  //   'pick lantern',
+  //   'move north',
+  //   'move east',
+  //   'drop lantern',
+  //   'pick key',
+  //   'move west',
+  //   'drop key',
+  //   'move north'
+  // ];
 
-  const logger = new IOSimulator(simulatorWinningInstructions);
+  const logger = new IOConsole();
   const theGame = new GameMain(logger);
 
   theGame.play().then(() => {});

@@ -62,10 +62,10 @@ Starting from version 2, add functionalities to the game:
 
 - Refactor the code extracting the logic of the commands and actions of the game:
   - Create a `Command` interface with a `execute(game: Game)` method.
-  - Create a `CommandFactory` interface and a `CommandFactoryAccordion` that will handle the creation of the commands (for now if-else statements).
+  - Create a `CommandFactory` interface and a `CommandFactory` that will handle the creation of the commands (for now if-else statements).
   - Create a class for every command the game supports.
   - Write unit tests for the new classes.
-- Implement `IO` interface, from which `IOConsole` class will inherit and create that class only from the program's `main()` method. This way there will be more flexibility in the future to change the input/output of the game.
+- Implement `InputOutput` interface, from which `IOConsole` class will inherit and create that class only from the program's `main()` method. This way there will be more flexibility in the future to change the input/output of the game.
 - Add a new room in the game, the `MagicRoom`, with the following characteristics:
   - After N times the player drops an object in the room, the room will behave magically and will reverse the object name and double up the object weight.
   - The room will have a `magicCounter` attribute that will keep track of the number of times the player drops an object in the room.
@@ -84,4 +84,8 @@ Starting from version 2, add functionalities to the game:
   - The `blockedDirection` and the `unlockTool` attributes will be set in the constructor.
 - All the rooms should extend the basic `Room` class.
 - Write unit tests for the new rooms.
-- Add `IOSimulator` class that implements `IO` interface. It should take a list of instructions and automatically execute them without user input. It could be useful for acceptance testing.
+- Add `IOSimulator` class that implements `InputOutput` interface. It should take a list of instructions and automatically execute them without user input. It could be useful for acceptance testing.
+
+### Version 4
+
+- Refactor the commands creation using dynamic class loading.

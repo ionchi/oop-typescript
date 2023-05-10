@@ -1,16 +1,16 @@
+import type { InputOutput } from './InputOutput';
 import { Game } from './Game';
-import { CommandFactoryAccordion } from './commands/CommandFactoryAccordion';
-import { IO } from './IO';
+import { CommandFactory } from './commands/CommandFactory';
 import { TEXT_MESSAGE } from './static-data';
 
 export class GameMain {
   private static readonly INIT_MESSAGE = `\n${TEXT_MESSAGE.welcomeMessage}`;
   public static readonly AVAILABLE_COMMANDS = ['move <direction>', 'pick <object>', 'drop <object>', 'look', 'help', 'quit'];
-  private readonly logger: IO;
+  private readonly logger: InputOutput;
 
   private readonly game: Game;
 
-  constructor(logger: IO) {
+  constructor(logger: InputOutput) {
     this.game = new Game();
     this.logger = logger;
   }
@@ -24,7 +24,7 @@ export class GameMain {
         const instruction = await this.logger.readInput(
             'What do you want to do? Type one of the available commands \n'
         );
-        this.executeCommand(instruction.toLowerCase());
+        await this.executeCommand(instruction.toLowerCase());
       }
     } catch {
       this.logger.close();
@@ -33,11 +33,11 @@ export class GameMain {
     }
   }
 
-  private executeCommand(instruction: string): boolean {
+  private async executeCommand(instruction: string): Promise<boolean> {
     let commandToExecute;
-    const factory = new CommandFactoryAccordion();
+    const factory = new CommandFactory();
 
-    commandToExecute = factory.createCommand(instruction);
+    commandToExecute = await factory.createCommand(instruction);
     if (commandToExecute) {
       commandToExecute.execute(this.game);
     }

@@ -1,8 +1,8 @@
-import { IO } from './IO';
 import * as console from 'console';
 import * as process from 'process';
+import type { InputOutput } from './InputOutput';
 
-export class IOSimulator implements IO {
+export class IOSimulator implements InputOutput {
     private readonly inputInstructions: string[];
     private currentInstructionIndex: number;
     constructor(instructions: string[]) {
