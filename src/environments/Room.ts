@@ -1,4 +1,5 @@
 import { Tool } from '../tools/Tool';
+import { Character } from '../characters/Character';
 
 export class Room {
   private static MAX_DIRECTIONS = 4;
@@ -10,6 +11,7 @@ export class Room {
   private readonly adjacentRooms: Room[];
   private adjacentRoomsNumber: number;
   private readonly directions: string[];
+  private character: Character;
 
   constructor(name: string) {
     this.name = name;
@@ -106,6 +108,14 @@ export class Room {
     return this.tools.filter(el => !!el?.getName());
   }
 
+  public setCharacter(character: Character): void {
+    this.character = character;
+  }
+
+  public getCharacter(): Character {
+    return this.character;
+  }
+
   public getDescription(): string {
     let description = '#####\n';
     description += `🛏️ Room: ${this.name}\n`;
@@ -113,6 +123,7 @@ export class Room {
     const availableTools = this.getAvailableTools();
     description += `Tools in the room: ${availableTools.length ? availableTools.map(el =>
         el.getDescription()) : '-'}\n`;
+    description += `Character in the room: ${this.character ? this.character.getName() : '-'}\n`;
     description += '#####';
     return description;
   }

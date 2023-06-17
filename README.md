@@ -49,7 +49,7 @@ Starting from version 1, add functionalities to the game:
 - Add `IOConsole` class that will handle the input/output of the game. Methods:
   - `showMessage()`
   - `readInput()` (returns a string)
-- Add unit tests. At least 3 (if makes sense) unit tests for `Room`, `Game`, `Player`, `Backpack` and `DungeonMap` classes.
+- Add unit tests. At least 3 (if it makes sense) unit tests for `Room`, `Game`, `Player`, `Backpack` and `DungeonMap` classes.
 
 ### Version 3
 **One of the problems to solve**:
@@ -89,3 +89,79 @@ Starting from version 2, add functionalities to the game:
 ### Version 4
 
 - Refactor the commands creation using dynamic class loading.
+- Introduce characters in the game.
+  - There can be one character per room.
+  - Every character has a name and a welcome phrase.
+  - Every character answers with the welcome phrase when the player writes `talk` to the character.
+  - Every character has a different behavior when the player writes `interact` to the character.
+    - The `dog` will bite the player and the player will lose 1 point.
+    - The `witch` will teleport the player to an adjacent room. If the player has talked to the witch before, the destination room will be one with more objects in it, otherwise it will be the one with fewer objects in it.
+    - The `wizard` will give the player a random object.
+  - Write unit tests for the new classes.
+- Add a dungeon uploader from a file given by the user.
+  - The file should be a JSON with a list of rooms (with their adjacent rooms), a list of tools and a list of characters from a specified list.
+  - At startup, the game should ask the user if he wants to upload a dungeon from a file or use the default one.
+
+<details>
+  <summary>The file format should be:</summary>
+
+  Allowed characters type: `dog`, `witch`, `wizard`.
+
+  Allowed rooms type: `normal`, `magic`, `dark`, `blocked`.
+
+  Allowed directions name: `north`, `south`, `east`, `west`.
+
+  ```json
+  {
+    "player": {
+        "name": "player1"
+    },
+    "rooms": [
+      {
+        "name": "room1",
+        "description": "description1",
+        "type": "normal"
+      },
+      {
+        "name": "room2",
+        "description": "description2",
+        "type": "normal"
+      }
+    ],
+    "tools": [
+      {
+        "name": "tool1",
+        "weight": 1,
+        "location": "room1"
+      }
+    ],
+    "characters": [
+      {
+        "name": "character1",
+        "welcomePhrase": "welcomePhrase1",
+        "type": "dog",
+        "location": "room1"
+      }
+    ],
+    "mapSpecs": {
+      "initialRoom": "room1",
+      "winningRoom": "room2",
+      "directions": [
+        {
+          "name": "north",
+          "from": "room1",
+          "to": "room2"
+        },
+        {
+            "name": "south",
+            "from": "room2",
+            "to": "room1"
+        }
+      ]
+    }
+  }
+  ```
+</details>
+
+Some other data...
+
