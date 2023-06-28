@@ -97,7 +97,14 @@ Starting from version 2, add functionalities to the game:
     - The `dog` will bite the player and the player will lose 1 point.
     - The `witch` will teleport the player to an adjacent room. If the player has talked to the witch before, the destination room will be one with more objects in it, otherwise it will be the one with fewer objects in it.
     - The `wizard` will give the player a random object.
-  - Write unit tests for the new classes.
+- Add an `AbstractCommand` class to get rid of unused methods in the `Command` interface.
+- Add `GiftCommand` and a `recieveGift()` method in the `Character` class through which the player can gift an object to the character, specifying the name of on tool the player has in the backpack.
+    - For a `dog` character, if the gift is a `bone`, the dog will throw an object in the room. If it's something else, the dog will bite the player. (-1 point)
+    - For a `witch` character, she will take the object doing nothing in return, just laughing.
+    - For a `wizard` character, he will halve the weight of the object and throw it in the room.
+- Extract all the static properties and put them in a config file. E.g. initial points, max weight, etc.
+- Refactor the directions as an enum - they are limited, and they are not going to change, so it's better to use an enum.
+- Write unit tests for the new classes.
 - Add a dungeon uploader from a file given by the user.
   - The file should be a JSON with a list of rooms (with their adjacent rooms), a list of tools and a list of characters from a specified list.
   - At startup, the game should ask the user if he wants to upload a dungeon from a file or use the default one.
@@ -163,5 +170,4 @@ Starting from version 2, add functionalities to the game:
   ```
 </details>
 
-Some other data...
 
