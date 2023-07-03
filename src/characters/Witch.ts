@@ -3,31 +3,27 @@ import { Game } from '../Game';
 import { Room } from '../environments/Room';
 
 export class Witch extends Character {
-    private readonly GIFT_RESPONSE = 'HA HA HA!';
+    private static readonly GIFT_RESPONSE = 'HA HA HA!';
     public override interact(game: Game): string {
-        const availableDirections = game.getCurrentRoom().getDirections();
-        const adjacentRooms = [];
-        for (const direction of availableDirections) {
-            const adjacentRoom = game.getCurrentRoom().getAdjacentRoom(direction);
-            adjacentRooms.push(adjacentRoom);
-        }
-        let newRoom: Room;
-        if (this.getHasBeenWelcomed()) {
-            // Room with the most tools
-            newRoom = adjacentRooms.reduce((prev, current) => {
-                return (prev.getTools().length > current.getTools().length) ? prev : current;
-            }, adjacentRooms[0]);
-        } else {
-            // Room with the least tools
-            newRoom = adjacentRooms.reduce((prev, current) => {
-                return (prev.getTools().length < current.getTools().length) ? prev : current;
-            }, adjacentRooms[0]);
-        }
+        const currentRoom = game.getCurrentRoom();
+        const availableDirections = currentRoom.getDirections();
+        const adjacentRooms = availableDirections.map(direction =>
+            currentRoom.getAdjacentRoom(direction));
+
+        // Determine the criteria for selecting new room based on Witch's reception.
+        const roomSelectionCriteria = (this.getHasBeenWelcomed())
+            ? (prev: Room, current: Room) =>
+                (prev.getTools().length > current.getTools().length) ? prev : current // Room with the most tools
+            : (prev: Room, current: Room) =>
+                (prev.getTools().length < current.getTools().length) ? prev : current; // Room with the least tools
+
+        const newRoom = adjacentRooms.reduce(roomSelectionCriteria, adjacentRooms[0]);
+
         game.setCurrentRoom(newRoom);
         return 'You\'ve been cursed!';
     }
 
     public override receiveGift(): string {
-        return this.GIFT_RESPONSE;
+        return Witch.GIFT_RESPONSE;
     }
 }
