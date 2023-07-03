@@ -1,7 +1,7 @@
 import type { InputOutput } from './InputOutput';
 import { Game } from './Game';
 import { CommandFactory } from './commands/CommandFactory';
-import { COMMAND_NAME, TEXT_MESSAGE } from './static-data';
+import { COMMAND_NAME, TEXT_MESSAGE } from './utils/static-data';
 import { Command } from './commands/Command';
 
 export class GameMain {

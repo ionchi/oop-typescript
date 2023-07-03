@@ -2,7 +2,7 @@ import { describe, expect, test } from 'vitest';
 import { DarkRoom } from '../environments/DarkRoom';
 import { Tool } from '../tools/Tool';
 import { Room } from '../environments/Room';
-import { TEXT_MESSAGE } from '../static-data';
+import { TEXT_MESSAGE } from '../utils/static-data';
 
 describe('DarkRoom', () => {
     test('Should create a dark room with a name, a needed light object, no directions and no tools', () => {

@@ -1,6 +1,6 @@
 import { Command } from './Command';
 import { GameMain } from '../GameMain';
-import { COMMAND_NAME, TEXT_MESSAGE } from '../static-data';
+import { COMMAND_NAME, TEXT_MESSAGE } from '../utils/static-data';
 
 export default class HelpCommand implements Command {
   private readonly name: string = COMMAND_NAME.help;

@@ -1,5 +1,5 @@
 import { Tool } from '../tools/Tool';
-import config from '../config';
+import config from '../utils/config';
 
 export class Backpack {
   private static readonly MAX_WEIGHT = config.maxBackpackWeight || 10;

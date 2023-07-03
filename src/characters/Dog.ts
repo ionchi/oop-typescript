@@ -1,6 +1,6 @@
 import { Game } from '../Game';
 import { Character } from './Character';
-import { TEXT_MESSAGE } from '../static-data';
+import { TEXT_MESSAGE } from '../utils/static-data';
 import { Tool } from '../tools/Tool';
 
 export class Dog extends Character {

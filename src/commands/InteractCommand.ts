@@ -1,5 +1,5 @@
 import { Command } from './Command';
-import { COMMAND_NAME, TEXT_MESSAGE } from '../static-data';
+import { COMMAND_NAME, TEXT_MESSAGE } from '../utils/static-data';
 import { Game } from '../Game';
 
 export default class InteractCommand implements Command {

@@ -1,6 +1,6 @@
 import { Command } from './Command';
 import { Game } from '../Game';
-import { COMMAND_NAME, TEXT_MESSAGE } from '../static-data';
+import { COMMAND_NAME, TEXT_MESSAGE } from '../utils/static-data';
 
 export default class DropCommand implements Command {
   private item: string;

@@ -1,6 +1,6 @@
 import { Tool } from '../tools/Tool';
 import { Character } from '../characters/Character';
-import { AdjacentRooms, Direction } from '../types';
+import { AdjacentRooms, Direction } from '../utils/types';
 
 export class Room {
   private static MAX_DIRECTIONS = 4;
