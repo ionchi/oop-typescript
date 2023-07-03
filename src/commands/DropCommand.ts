@@ -8,7 +8,7 @@ export default class DropCommand implements Command {
 
   public execute(game: Game): void {
     const toolToDrop = game.getPlayer().getBackpack().getTools()
-        .find((el) => el.getName() === this.item);
+      .find((el) => el.getName() === this.item);
     if (!toolToDrop) {
       console.log(TEXT_MESSAGE.invalidTool);
       return;

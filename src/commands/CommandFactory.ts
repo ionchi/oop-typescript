@@ -31,7 +31,7 @@ export class CommandFactory implements ICommandFactory {
 
       return command;
     } catch {
-        return new (await this.loadComponent(invalidCommandName))();
+      return new (await this.loadComponent(invalidCommandName))();
     }
   }
 }

@@ -32,7 +32,7 @@ export class GameMain {
     try {
       while(!this.game.isGameOver()) {
         const instruction = await this.logger.readInput(
-            `${TEXT_MESSAGE.initQuestion} \n`
+          `${TEXT_MESSAGE.initQuestion} \n`
         );
         await this.executeCommand(instruction.toLowerCase());
       }

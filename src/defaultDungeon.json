@@ -1,0 +1,91 @@
+{
+  "tools": [
+    {
+      "name": "lantern",
+      "weight": 3,
+      "room": "room N2"
+    },
+    {
+      "name": "bone",
+      "weight": 1,
+      "room": "hall"
+    },
+    {
+      "name": "key",
+      "weight": 1,
+      "room": "room N1"
+    }
+  ],
+  "characters": [
+    {
+      "type": "dog",
+      "name": "Rex",
+      "welcomeMessage": "Woof!",
+      "room": "hall"
+    },
+    {
+      "type": "witch",
+      "name": "Hex",
+      "welcomeMessage": "Bibbidi bobbidi boo!",
+      "room": "room N1"
+    },
+    {
+      "type": "wizard",
+      "name": "Merlin",
+      "welcomeMessage": "Abracadabra!",
+      "room": "lab"
+    }
+  ],
+  "rooms": [
+    {
+      "name": "hall",
+      "type": "blocked",
+      "isInitRoom": true,
+      "specs": {
+        "blockedDirection": "north",
+        "unlockTool": "key"
+      },
+      "directions": {
+        "north": "library",
+        "east": "room N1",
+        "south": "room N2",
+        "west": "lab"
+      }
+    },
+    {
+      "name": "room N1",
+      "type": "dark",
+      "specs": {
+        "lightSource": "lantern"
+      },
+      "directions": {
+          "west": "hall"
+      }
+    },
+    {
+      "name": "room N2",
+      "type": "normal",
+      "directions": {
+          "north": "hall"
+      }
+    },
+    {
+      "name": "library",
+      "type": "normal",
+      "isWinningRoom": true,
+      "directions": {
+        "south": "hall"
+      }
+    },
+    {
+      "name": "lab",
+      "type": "magic",
+      "specs": {
+        "magicThreshold": 3
+      },
+      "directions": {
+        "east": "hall"
+      }
+    }
+  ]
+}
