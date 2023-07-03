@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest';
 import { Room } from '../environments/Room';
 import { Tool } from '../tools/Tool';
-import { Direction } from '../types';
+import { Direction } from '../utils/types';
 
 describe('Room', () => {
   test('Should create a room with a name and no directions and tools', () => {

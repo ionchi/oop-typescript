@@ -1,5 +1,5 @@
 import { Backpack } from './Backpack';
-import config from '../config';
+import config from '../utils/config';
 
 export class Player {
   private static readonly INIT_POINTS = config.initPoints || 20;

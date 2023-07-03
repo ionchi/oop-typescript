@@ -1,5 +1,5 @@
 import { Room } from './Room';
-import { TEXT_MESSAGE } from '../static-data';
+import { TEXT_MESSAGE } from '../utils/static-data';
 
 export class DarkRoom extends Room {
     private static readonly DEFAULT_LIGHT_OBJECT = 'lantern';

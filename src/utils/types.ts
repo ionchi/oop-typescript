@@ -1,4 +1,4 @@
-import { Room } from './environments/Room';
+import { Room } from '../environments/Room';
 
 export enum Direction {
     'north' = 'north',

@@ -1,5 +1,5 @@
 import { Command } from './Command';
-import { COMMAND_NAME } from '../static-data';
+import { COMMAND_NAME } from '../utils/static-data';
 
 interface ICommandFactory {
   createCommand(commandName: string): Command | Promise<Command>;

@@ -1,5 +1,5 @@
 import { Room } from './Room';
-import { Direction } from '../types';
+import { Direction } from '../utils/types';
 
 export class BlockedRoom extends Room {
     private static readonly DEFAULT_KEY_TOOL = 'key';

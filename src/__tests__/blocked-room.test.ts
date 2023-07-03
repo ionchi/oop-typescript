@@ -2,7 +2,7 @@ import { describe, expect, test } from 'vitest';
 import { BlockedRoom } from '../environments/BlockedRoom';
 import { Tool } from '../tools/Tool';
 import { Room } from '../environments/Room';
-import { Direction } from '../types';
+import { Direction } from '../utils/types';
 
 describe('BlockedRoom', () => {
     test('Should create a blocked room with a name, a blocked direction, a needed unlock tool' +

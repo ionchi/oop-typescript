@@ -1,6 +1,6 @@
 import { Room } from './Room';
 import { Tool } from '../tools/Tool';
-import config from '../config';
+import config from '../utils/config';
 
 export class MagicRoom extends Room {
     private magicCounter: number;

@@ -6,7 +6,7 @@ import { BlockedRoom } from './BlockedRoom';
 import { Dog } from '../characters/Dog';
 import { Witch } from '../characters/Witch';
 import { Wizard } from '../characters/Wizard';
-import { Direction } from '../types';
+import { Direction } from '../utils/types';
 
 export class DungeonMap {
   private initRoom: Room;
