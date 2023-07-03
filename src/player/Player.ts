@@ -1,8 +1,9 @@
 import { Backpack } from './Backpack';
+import config from '../config';
 
 export class Player {
-  private static readonly INIT_POINTS = 20;
-  private static readonly DEFAULT_NAME = 'Player';
+  private static readonly INIT_POINTS = config.initPoints || 20;
+  private static readonly DEFAULT_NAME = config.defaultPlayerName || 'Player';
   private readonly name: string;
   private readonly backpack: Backpack;
   private points: number;

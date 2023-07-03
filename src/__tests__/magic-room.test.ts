@@ -7,8 +7,7 @@ describe('MagicRoom', () => {
         const room = new MagicRoom('magic room', 2);
 
         expect(room.getName()).toBe('magic room');
-        expect(room.getAvailableDirections()).toEqual([]);
-        expect(room.getAvailableTools()).toEqual([]);
+        expect(room.getDirections()).toEqual([]);
         expect(room.getMagicThreshold()).toEqual(2);
     });
 

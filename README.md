@@ -97,7 +97,6 @@ Starting from version 2, add functionalities to the game:
     - The `dog` will bite the player and the player will lose 1 point.
     - The `witch` will teleport the player to an adjacent room. If the player has talked to the witch before, the destination room will be one with more objects in it, otherwise it will be the one with fewer objects in it.
     - The `wizard` will give the player a random object.
-- Add an `AbstractCommand` class to get rid of unused methods in the `Command` interface.
 - Add `GiftCommand` and a `recieveGift()` method in the `Character` class through which the player can gift an object to the character, specifying the name of on tool the player has in the backpack.
     - For a `dog` character, if the gift is a `bone`, the dog will throw an object in the room. If it's something else, the dog will bite the player. (-1 point)
     - For a `witch` character, she will take the object doing nothing in return, just laughing.

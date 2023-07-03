@@ -1,15 +1,17 @@
 import { Character } from './Character';
 import { Game } from '../Game';
+import { Room } from '../environments/Room';
 
 export class Witch extends Character {
+    private readonly GIFT_RESPONSE = 'HA HA HA!';
     public override interact(game: Game): string {
-        const availableDirections = game.getCurrentRoom().getAvailableDirections();
+        const availableDirections = game.getCurrentRoom().getDirections();
         const adjacentRooms = [];
         for (const direction of availableDirections) {
             const adjacentRoom = game.getCurrentRoom().getAdjacentRoom(direction);
             adjacentRooms.push(adjacentRoom);
         }
-        let newRoom;
+        let newRoom: Room;
         if (this.getHasBeenWelcomed()) {
             // Room with the most tools
             newRoom = adjacentRooms.reduce((prev, current) => {
@@ -23,5 +25,9 @@ export class Witch extends Character {
         }
         game.setCurrentRoom(newRoom);
         return 'You\'ve been cursed!';
+    }
+
+    public override receiveGift(): string {
+        return this.GIFT_RESPONSE;
     }
 }

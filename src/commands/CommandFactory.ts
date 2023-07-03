@@ -19,7 +19,7 @@ export class CommandFactory implements ICommandFactory {
       const commandName = instruction.split(' ')[0];
       const param = instruction.split(' ')[1];
 
-      let className;
+      let className: string;
       if (Object.values(COMMAND_NAME).indexOf(commandName) !== -1) {
         className = `${commandName.charAt(0).toUpperCase()}${commandName.slice(1)}Command`;
       } else {
