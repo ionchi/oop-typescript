@@ -6,6 +6,7 @@ import { BlockedRoom } from './BlockedRoom';
 import { Dog } from '../characters/Dog';
 import { Witch } from '../characters/Witch';
 import { Wizard } from '../characters/Wizard';
+import { Direction } from '../types';
 
 export class DungeonMap {
   private initRoom: Room;
@@ -31,14 +32,14 @@ export class DungeonMap {
     const gift = new Tool('key', 1);
     const wizard = new Wizard('wizard', 'Abracadabra', gift);
 
-    hall.setAdjacentRoom('north', library);
-    hall.setAdjacentRoom('east', room1);
-    hall.setAdjacentRoom('south', room2);
-    hall.setAdjacentRoom('west', lab);
-    room1.setAdjacentRoom('west', hall);
-    room2.setAdjacentRoom('north', hall);
-    lab.setAdjacentRoom('east', hall);
-    library.setAdjacentRoom('south', hall);
+    hall.setAdjacentRoom(Direction.north, library);
+    hall.setAdjacentRoom(Direction.east, room1);
+    hall.setAdjacentRoom(Direction.south, room2);
+    hall.setAdjacentRoom(Direction.west, lab);
+    room1.setAdjacentRoom(Direction.west, hall);
+    room2.setAdjacentRoom(Direction.north, hall);
+    lab.setAdjacentRoom(Direction.east, hall);
+    library.setAdjacentRoom(Direction.south, hall);
 
     room2.addTool(lantern);
     hall.addTool(bone);

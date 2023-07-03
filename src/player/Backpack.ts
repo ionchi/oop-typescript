@@ -1,34 +1,31 @@
 import { Tool } from '../tools/Tool';
+import config from '../config';
 
 export class Backpack {
-  private static readonly MAX_WEIGHT = 10;
+  private static readonly MAX_WEIGHT = config.maxBackpackWeight || 10;
   private readonly tools: Tool[];
-  private toolsNumber: number;
   private readonly maxWeight: number;
 
   constructor(maxWeight?: number) {
-    this.tools = new Array(10);
-    this.toolsNumber = 0;
     this.maxWeight = maxWeight || Backpack.MAX_WEIGHT;
+    this.tools = [];
   }
 
   public addTool(tool: Tool): boolean {
     if (this.hasTool(tool.getName())) {
       return false;
     }
-    if (this.getWeight() + tool.getWeight() >= this.maxWeight || this.toolsNumber === 10) {
+    if (this.getWeight() + tool.getWeight() >= this.maxWeight) {
       return false;
     }
-    this.tools[this.toolsNumber] = tool;
-    this.toolsNumber++;
+    this.tools.push(tool);
     return true;
   }
 
   public removeTool(toolName: string): boolean {
-    for (let i = 0; i < this.toolsNumber; i++) {
+    for (let i = 0; i < this.tools.length; i++) {
       if (this.tools[i]?.getName() === toolName) {
-        this.tools[i] = null;
-        this.toolsNumber--;
+        this.tools.splice(i, 1);
         return true;
       }
     }
@@ -36,7 +33,7 @@ export class Backpack {
   }
 
   public hasTool(toolName: string): boolean {
-    for (let i = 0; i < this.toolsNumber; i++) {
+    for (let i = 0; i < this.tools.length; i++) {
       if (this.tools[i]?.getName() === toolName) {
         return true;
       }
@@ -50,14 +47,14 @@ export class Backpack {
 
   public getWeight(): number {
     let weight = 0;
-    for (let i = 0; i < this.toolsNumber; i++) {
+    for (let i = 0; i < this.tools.length; i++) {
       weight += this.tools[i]?.getWeight() || 0;
     }
     return weight;
   }
 
   public isEmpty(): boolean {
-    return this.toolsNumber === 0;
+    return this.tools.length === 0;
   }
 
   public getTools(): Tool[] {

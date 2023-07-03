@@ -8,7 +8,8 @@ export const TEXT_MESSAGE = {
     invalidDirection: '⚠️ Invalid direction!',
     thanksForPlaying: '🙏 Thanks for playing!',
     noCharacter: '⚠️ There\'s no character here!',
-    dogInteraction: '⚠️ Ouch! You\'ve been bitten by the dog! You lose 1 point.',
+    dogBadInteraction: '⚠️ Ouch! You\'ve been bitten by the dog! You lose 1 point.',
+    noTools: '⚠️ You don\'t have any tools!',
     died: '😵 You died!'
 };
 
@@ -21,5 +22,6 @@ export const COMMAND_NAME = {
     quit: 'quit',
     interact: 'interact',
     talk: 'talk',
-    invalid: 'invalid'
+    invalid: 'invalid',
+    gift: 'gift'
 };

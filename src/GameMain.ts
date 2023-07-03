@@ -2,6 +2,7 @@ import type { InputOutput } from './InputOutput';
 import { Game } from './Game';
 import { CommandFactory } from './commands/CommandFactory';
 import { COMMAND_NAME, TEXT_MESSAGE } from './static-data';
+import { Command } from './commands/Command';
 
 export class GameMain {
   public static readonly AVAILABLE_COMMANDS = [
@@ -10,6 +11,7 @@ export class GameMain {
     `${COMMAND_NAME.drop} <object>`,
     `${COMMAND_NAME.talk} <character>`,
     `${COMMAND_NAME.interact} <character>`,
+    `${COMMAND_NAME.gift} <object>`,
     COMMAND_NAME.look,
     COMMAND_NAME.help,
     COMMAND_NAME.quit
@@ -42,7 +44,7 @@ export class GameMain {
   }
 
   private async executeCommand(instruction: string): Promise<boolean> {
-    let commandToExecute;
+    let commandToExecute: Command;
     const factory = new CommandFactory();
 
     commandToExecute = await factory.createCommand(instruction);

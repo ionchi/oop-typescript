@@ -1,10 +1,11 @@
 import { Room } from './Room';
 import { Tool } from '../tools/Tool';
+import config from '../config';
 
 export class MagicRoom extends Room {
     private magicCounter: number;
     private readonly magicThreshold: number;
-    private static readonly DEFAULT_MAGIC_THRESHOLD = 3;
+    private static readonly DEFAULT_MAGIC_THRESHOLD = config.magicRoomThreshold;
 
     constructor(name: string, threshold?: number) {
         super(name);

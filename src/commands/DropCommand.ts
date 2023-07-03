@@ -7,20 +7,15 @@ export default class DropCommand implements Command {
   private readonly name: string = COMMAND_NAME.drop;
 
   public execute(game: Game): void {
-    if (this.item) {
-      const toolToDrop = game.getPlayer().getBackpack().getTools()
+    const toolToDrop = game.getPlayer().getBackpack().getTools()
         .find((el) => el.getName() === this.item);
-      if (!toolToDrop) {
-        console.log(TEXT_MESSAGE.invalidTool);
-        return;
-      }
-      game.getPlayer().getBackpack().removeTool(toolToDrop.getName());
-      game.getCurrentRoom().addTool(toolToDrop);
-      console.log(`ℹ️ You dropped ${toolToDrop.getDescription()}`);
-      console.log(game.getPlayer().getBackpack().getDescription());
-    } else {
+    if (!toolToDrop) {
       console.log(TEXT_MESSAGE.invalidTool);
+      return;
     }
+    game.getPlayer().getBackpack().removeTool(toolToDrop.getName());
+    game.getCurrentRoom().addTool(toolToDrop);
+    console.log(`ℹ️ You dropped ${toolToDrop.getDescription()}`);
   }
 
   public setParameter(param: string): void {

@@ -9,8 +9,7 @@ describe('DarkRoom', () => {
         const room = new DarkRoom('dark room', 'torch');
 
         expect(room.getName()).toBe('dark room');
-        expect(room.getAvailableDirections()).toEqual([]);
-        expect(room.getAvailableTools()).toEqual([]);
+        expect(room.getDirections()).toEqual([]);
         expect(room.getLightToolName()).toEqual('torch');
     });
 

@@ -5,6 +5,7 @@ import { Tool } from '../tools/Tool';
 export class Wizard extends Character {
     private readonly GIFT_MESSAGE = 'You\'ve been given a gift!';
     private readonly NO_MORE_GIFTS_MESSAGE = 'I don\'t have another gift for you!';
+    private readonly GIFT_RESPONSE = 'I\'ve given you a lighter version of your gift!';
 
     private gift: Tool;
 
@@ -20,5 +21,11 @@ export class Wizard extends Character {
         } else {
             return this.NO_MORE_GIFTS_MESSAGE;
         }
+    }
+
+    public receiveGift(game: Game, tool: Tool): string {
+        const lighterTool = new Tool(tool.getName(), tool.getWeight() / 2);
+        game.getCurrentRoom().addTool(lighterTool);
+        return this.GIFT_RESPONSE;
     }
 }

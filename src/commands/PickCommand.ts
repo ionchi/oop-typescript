@@ -7,16 +7,15 @@ export default class PickCommand implements Command {
   private item: string;
 
   public execute(game: Game): void {
-    const roomTools = game.getCurrentRoom().getAvailableTools();
+    const roomTools = game.getCurrentRoom().getTools();
     const tool = roomTools.find((el) => el.getName() === this.item);
-    if (tool) {
-      game.getPlayer().getBackpack().addTool(tool);
-      game.getCurrentRoom().removeTool(tool.getName());
-      console.log(`ℹ️ You picked ${tool.getDescription()}`);
-      console.log(game.getPlayer().getBackpack().getDescription());
-    } else {
+    if (!tool) {
       console.log(TEXT_MESSAGE.invalidTool);
+      return;
     }
+    game.getPlayer().getBackpack().addTool(tool);
+    game.getCurrentRoom().removeTool(tool.getName());
+    console.log(`ℹ️ You picked ${tool.getDescription()}`);
   }
 
   public setParameter(param: string): void {
