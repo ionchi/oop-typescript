@@ -76,7 +76,7 @@ export class Room {
     description += `Available directions: ${this.getDirections().join(' - ')}\n`;
     const availableTools = this.getTools();
     description += `Tools in the room: ${availableTools.length ? availableTools.map(el =>
-        el.getDescription()) : '-'}\n`;
+      el.getDescription()) : '-'}\n`;
     description += `Character in the room: ${this.character ? this.character.getName() : '-'}\n`;
     description += '#####';
     return description;

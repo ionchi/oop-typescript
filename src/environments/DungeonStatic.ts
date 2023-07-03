@@ -7,16 +7,13 @@ import { Dog } from '../characters/Dog';
 import { Witch } from '../characters/Witch';
 import { Wizard } from '../characters/Wizard';
 import { Direction } from '../utils/types';
+import { Dungeon } from './Dungeon';
 
-export class DungeonMap {
-  private initRoom: Room;
-  private winningRoom: Room;
-
+export class DungeonStatic extends Dungeon {
   constructor() {
-    this.init();
+    super();
   }
-
-  private init(): void {
+  protected init(): void {
     const lantern = new Tool('lantern', 3);
     const bone = new Tool('bone', 1);
     const key = new Tool('key', 1);
@@ -29,8 +26,7 @@ export class DungeonMap {
 
     const dog = new Dog('dog', 'woof');
     const witch = new Witch('witch', 'Bibbidi bobbidi boo');
-    const gift = new Tool('key', 1);
-    const wizard = new Wizard('wizard', 'Abracadabra', gift);
+    const wizard = new Wizard('wizard', 'Abracadabra');
 
     hall.setAdjacentRoom(Direction.north, library);
     hall.setAdjacentRoom(Direction.east, room1);
@@ -51,13 +47,5 @@ export class DungeonMap {
 
     this.initRoom = hall;
     this.winningRoom = library;
-  }
-
-  public getInitRoom(): Room {
-    return this.initRoom;
-  }
-
-  public getWinningRoom(): Room {
-    return this.winningRoom;
   }
 }

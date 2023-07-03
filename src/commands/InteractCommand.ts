@@ -3,30 +3,30 @@ import { COMMAND_NAME, TEXT_MESSAGE } from '../utils/static-data';
 import { Game } from '../Game';
 
 export default class InteractCommand implements Command {
-    private readonly name = COMMAND_NAME.interact;
-    private characterName: string;
+  private readonly name = COMMAND_NAME.interact;
+  private characterName: string;
 
-    public execute(game: Game): void {
-        const currentRoom = game.getCurrentRoom();
-        const character = currentRoom.getCharacter();
+  public execute(game: Game): void {
+    const currentRoom = game.getCurrentRoom();
+    const character = currentRoom.getCharacter();
 
-        if (!character) {
-            console.log(TEXT_MESSAGE.noCharacter);
-            return;
-        }
-
-        console.log(character.interact(game));
+    if (!character) {
+      console.log(TEXT_MESSAGE.noCharacter);
+      return;
     }
 
-    public setParameter(param: string) {
-        this.characterName = param;
-    }
+    console.log(character.interact(game));
+  }
 
-    public getParameter(): string {
-        return this.characterName;
-    }
+  public setParameter(param: string) {
+    this.characterName = param;
+  }
 
-    public getName(): string {
-        return this.name;
-    }
+  public getParameter(): string {
+    return this.characterName;
+  }
+
+  public getName(): string {
+    return this.name;
+  }
 }
