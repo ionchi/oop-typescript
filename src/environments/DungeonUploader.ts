@@ -11,6 +11,7 @@ import { Dog } from '../characters/Dog';
 import { Witch } from '../characters/Witch';
 import { Wizard } from '../characters/Wizard';
 import { Dungeon } from './Dungeon';
+import { log } from '../utils/basic-loader';
 
 export class DungeonUploader extends Dungeon {
   constructor(path: string) {
@@ -19,9 +20,24 @@ export class DungeonUploader extends Dungeon {
   private requireJson(path: string) {
     return require(resolve(process.cwd(), path));
   }
+
+  private validateMapConfig(mapConfig: MapConfig): void {
+    if (!mapConfig.rooms) {
+      throw new Error('Invalid map config: missing rooms');
+    }
+    if (!mapConfig.rooms.find(el => el.isInitRoom)) {
+      throw new Error('Invalid map config: missing init room');
+    }
+    if (!mapConfig.rooms.find(el => el.isWinningRoom)) {
+      throw new Error('Invalid map config: missing winning room');
+    }
+  }
+
   protected init(path: string): void {
     try {
       let mapConfig: MapConfig = this.requireJson(path);
+
+      this.validateMapConfig(mapConfig);
 
       const rooms: Room[] = [];
 
@@ -103,7 +119,7 @@ export class DungeonUploader extends Dungeon {
         }
       }
     } catch (err) {
-      console.error(err);
+      log.error(`💀 Ops: ${err.message}`);
     }
   }
 }

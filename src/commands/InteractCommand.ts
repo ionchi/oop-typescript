@@ -1,6 +1,7 @@
 import { Command } from './Command';
 import { COMMAND_NAME, TEXT_MESSAGE } from '../utils/static-data';
 import { Game } from '../Game';
+import { log } from '../utils/basic-loader';
 
 export default class InteractCommand implements Command {
   private readonly name = COMMAND_NAME.interact;
@@ -11,11 +12,11 @@ export default class InteractCommand implements Command {
     const character = currentRoom.getCharacter();
 
     if (!character) {
-      console.log(TEXT_MESSAGE.noCharacter);
+      log.error(TEXT_MESSAGE.noCharacter);
       return;
     }
 
-    console.log(character.interact(game));
+    log.success(character.interact(game));
   }
 
   public setParameter(param: string) {

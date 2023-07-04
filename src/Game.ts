@@ -1,6 +1,6 @@
 import { Room } from './environments/Room';
 import { Player } from './player/Player';
-// import { DungeonUploader } from './environments/DungeonUploader';
+import { DungeonUploader } from './environments/DungeonUploader';
 import { Dungeon } from './environments/Dungeon';
 import { DungeonStatic } from './environments/DungeonStatic';
 
@@ -10,9 +10,13 @@ export class Game {
   private readonly player: Player;
   private gameOver: boolean;
 
-  constructor() {
+  constructor(mapPath?: string) {
+    if (mapPath) {
+      this.dungeonMap = new DungeonUploader(mapPath);
+    } else {
+      this.dungeonMap = new DungeonStatic();
+    }
     // this.dungeonMap = new DungeonUploader('./src/defaultDungeon.json');
-    this.dungeonMap = new DungeonStatic();
     this.currentRoom = this.dungeonMap.getInitRoom();
     this.player = new Player();
     this.gameOver = false;

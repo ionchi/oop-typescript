@@ -1,6 +1,7 @@
 import { Command } from './Command';
 import { Game } from '../Game';
 import { COMMAND_NAME, TEXT_MESSAGE } from '../utils/static-data';
+import { log } from '../utils/basic-loader';
 
 export default class DropCommand implements Command {
   private item: string;
@@ -10,12 +11,12 @@ export default class DropCommand implements Command {
     const toolToDrop = game.getPlayer().getBackpack().getTools()
       .find((el) => el.getName() === this.item);
     if (!toolToDrop) {
-      console.log(TEXT_MESSAGE.invalidTool);
+      log.error(TEXT_MESSAGE.invalidTool);
       return;
     }
     game.getPlayer().getBackpack().removeTool(toolToDrop.getName());
     game.getCurrentRoom().addTool(toolToDrop);
-    console.log(`ℹ️ You dropped ${toolToDrop.getDescription()}`);
+    log.success(`ℹ️ You dropped ${toolToDrop.getDescription()}`);
   }
 
   public setParameter(param: string): void {
