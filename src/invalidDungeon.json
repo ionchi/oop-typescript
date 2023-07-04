@@ -1,0 +1,36 @@
+{
+  "tools": [],
+  "characters": [],
+  "rooms": [
+    {
+      "name": "hall",
+      "type": "blocked",
+      "isInitRoom": true,
+      "specs": {
+        "blockedDirection": "north",
+        "unlockTool": "key"
+      },
+      "directions": {
+        "north": "library",
+        "east": "room N1"
+      }
+    },
+    {
+      "name": "room N1",
+      "type": "dark",
+      "specs": {
+        "lightSource": "lantern"
+      },
+      "directions": {
+        "west": "hall"
+      }
+    },
+    {
+      "name": "library",
+      "type": "normal",
+      "directions": {
+        "south": "hall"
+      }
+    }
+  ]
+}

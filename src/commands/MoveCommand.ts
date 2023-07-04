@@ -2,6 +2,7 @@ import { Command } from './Command';
 import { Game } from '../Game';
 import { COMMAND_NAME, TEXT_MESSAGE } from '../utils/static-data';
 import { Direction } from '../utils/types';
+import { log } from '../utils/basic-loader';
 
 export default class MoveCommand implements Command {
   private readonly name = COMMAND_NAME.move;
@@ -13,19 +14,19 @@ export default class MoveCommand implements Command {
 
     const dir = this.direction as unknown as Direction;
     if (!this.direction || !Object.values(Direction).includes(dir)) {
-      console.log(TEXT_MESSAGE.invalidDirection);
+      log.error(TEXT_MESSAGE.invalidDirection);
       return;
     }
 
     nextRoom = currentRoom.getAdjacentRoom(dir);
 
     if (!nextRoom) {
-      console.log(TEXT_MESSAGE.invalidDirection);
+      log.error(TEXT_MESSAGE.invalidDirection);
       return;
     }
 
     game.setCurrentRoom(nextRoom);
-    console.log(game.getCurrentRoom().getName());
+    log.success(game.getCurrentRoom().getName());
     const points = game.getPlayer().getPoints();
     game.getPlayer().setPoints(points - 1);
   }

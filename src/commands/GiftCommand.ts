@@ -1,6 +1,7 @@
 import { Command } from './Command';
 import { COMMAND_NAME, TEXT_MESSAGE } from '../utils/static-data';
 import { Game } from '../Game';
+import { log } from '../utils/basic-loader';
 
 export default class GiftCommand implements Command {
   private readonly name: string = COMMAND_NAME.gift;
@@ -10,21 +11,21 @@ export default class GiftCommand implements Command {
     const playerBackpack = game.getPlayer().getBackpack();
     const character = game.getCurrentRoom().getCharacter();
     if (playerBackpack.getTools().length === 0) {
-      console.log(TEXT_MESSAGE.noTools);
+      log.error(TEXT_MESSAGE.noTools);
       return;
     }
     if (!character) {
-      console.log(TEXT_MESSAGE.noCharacter);
+      log.error(TEXT_MESSAGE.noCharacter);
       return;
     }
     const toolToGift = playerBackpack.getTools()
       .find((el) => el.getName() === this.item);
     if (!toolToGift) {
-      console.log(TEXT_MESSAGE.invalidTool);
+      log.error(TEXT_MESSAGE.invalidTool);
       return;
     }
     playerBackpack.removeTool(toolToGift.getName());
-    console.log(character.receiveGift(game, toolToGift));
+    log.success(character.receiveGift(game, toolToGift));
   }
 
   public setParameter(param: string): void {

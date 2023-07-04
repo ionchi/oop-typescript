@@ -104,9 +104,9 @@ Starting from version 2, add functionalities to the game:
 - [x] Extract all the static properties and put them in a config file. E.g. initial points, max weight, etc.
 - [x] Refactor the directions as an enum - they are limited, and they are not going to change, so it's better to use an enum.
 - [x] Write unit tests for the new classes.
-- [ ] Add a dungeon uploader from a file given by the user.
-  - [x] The file should be a JSON with a list of rooms (with their adjacent rooms), a list of tools and a list of characters from a specified list.
-  - [ ] At startup, the game should ask the user if he wants to upload a dungeon from a file or use the default one. 
+- [x] Add a dungeon uploader from a file given by the user.
+  - The file should be a JSON with a list of rooms (with their adjacent rooms), a list of tools and a list of characters from a specified list.
+  - At startup, the game should ask the user if he wants to upload a dungeon from a file or use the default one. 
 
 <details>
   <summary>The file format should be:</summary>

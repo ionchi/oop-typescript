@@ -2,7 +2,7 @@ import { GameMain } from './GameMain';
 // import { IOSimulator } from './IOSimulator';
 import { IOConsole } from './IOConsole';
 
-function main() {
+async function main() {
   // const simulatorWinningInstructions = [
   //   'pick bone',
   //   'gift bone',
@@ -18,9 +18,15 @@ function main() {
   // ];
 
   const logger = new IOConsole();
-  const theGame = new GameMain(logger);
+
+  const mapPath = await logger.readInput(
+    'Provide a path to a file with the map to load it, or press enter to load the default map: ',
+  );
+
+
+  const theGame = new GameMain(logger, mapPath);
 
   theGame.play().then(() => {});
 }
 
-main();
+main().then(() => {});

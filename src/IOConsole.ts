@@ -1,6 +1,7 @@
 import * as readline from 'node:readline/promises';
 import * as process from 'process';
 import type { InputOutput } from './InputOutput';
+import { log } from './utils/basic-loader';
 
 export class IOConsole implements InputOutput {
   private prompt: readline.Interface;
@@ -12,8 +13,9 @@ export class IOConsole implements InputOutput {
     });
   }
 
-  public showMessage(message: string): void {
-    console.log(message);
+  public showMessage(message: string, color?: string): void {
+    const col = color || 'default';
+    log[col](message);
   }
 
   public async readInput(question: string): Promise<string> {
