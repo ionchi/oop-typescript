@@ -2,7 +2,7 @@ import { Command } from './Command';
 import { Game } from '../Game';
 import { COMMAND_NAME, TEXT_MESSAGE } from '../utils/static-data';
 import { Direction } from '../utils/types';
-import { log } from '../utils/basic-loader';
+import { log } from '../utils/basic-logger';
 
 export default class MoveCommand implements Command {
   private readonly name = COMMAND_NAME.move;

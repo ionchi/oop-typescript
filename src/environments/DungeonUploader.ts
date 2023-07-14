@@ -11,7 +11,7 @@ import { Dog } from '../characters/Dog';
 import { Witch } from '../characters/Witch';
 import { Wizard } from '../characters/Wizard';
 import { Dungeon } from './Dungeon';
-import { log } from '../utils/basic-loader';
+import { log } from '../utils/basic-logger';
 
 export class DungeonUploader extends Dungeon {
   constructor(path: string) {

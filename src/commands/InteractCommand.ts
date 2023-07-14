@@ -1,7 +1,7 @@
 import { Command } from './Command';
 import { COMMAND_NAME, TEXT_MESSAGE } from '../utils/static-data';
 import { Game } from '../Game';
-import { log } from '../utils/basic-loader';
+import { log } from '../utils/basic-logger';
 
 export default class InteractCommand implements Command {
   private readonly name = COMMAND_NAME.interact;

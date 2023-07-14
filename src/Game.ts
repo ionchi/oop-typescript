@@ -16,7 +16,6 @@ export class Game {
     } else {
       this.dungeonMap = new DungeonStatic();
     }
-    // this.dungeonMap = new DungeonUploader('./src/defaultDungeon.json');
     this.currentRoom = this.dungeonMap.getInitRoom();
     this.player = new Player();
     this.gameOver = false;
