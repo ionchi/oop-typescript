@@ -1,7 +1,7 @@
 import * as readline from 'node:readline/promises';
 import * as process from 'process';
 import type { InputOutput } from './InputOutput';
-import { log } from './utils/basic-loader';
+import { log } from './utils/basic-logger';
 
 export class IOConsole implements InputOutput {
   private prompt: readline.Interface;

@@ -1,6 +1,6 @@
-import * as console from 'console';
 import * as process from 'process';
 import type { InputOutput } from './InputOutput';
+import { log } from './utils/basic-logger';
 
 export class IOSimulator implements InputOutput {
   private readonly inputInstructions: string[];
@@ -23,13 +23,13 @@ export class IOSimulator implements InputOutput {
   }
 
   public showMessage(message: string) {
-    console.log(message);
+    log.info(message);
   }
 
   public async readInput(): Promise<string> {
     return new Promise((resolve, reject) => {
       const instruction = this.getInstruction();
-      console.log(`--> [${this.currentInstructionIndex}] ${instruction}`);
+      log.info(`--> [${this.currentInstructionIndex}] ${instruction}`);
       setTimeout(() => {
         if (instruction) {
           resolve(instruction);

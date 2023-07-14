@@ -26,8 +26,14 @@ export class GameMain {
   }
 
   public async play(): Promise<void> {
-    this.logger.showMessage(TEXT_MESSAGE.welcomeMessage, 'success');
-    this.logger.showMessage(`${TEXT_MESSAGE.availableCommands}: ${GameMain.AVAILABLE_COMMANDS.join(', ')}\n`, 'secondary');
+    this.logger.showMessage(
+      TEXT_MESSAGE.welcomeMessage,
+      'success'
+    );
+    this.logger.showMessage(
+      `${TEXT_MESSAGE.availableCommands}: ${GameMain.AVAILABLE_COMMANDS.join(', ')}\n`,
+      'secondary'
+    );
 
     try {
       while(!this.game.isGameOver()) {
@@ -53,7 +59,10 @@ export class GameMain {
     }
 
     if (this.game.isWon()) {
-      this.logger.showMessage(`🎉 You won! You ended with ${this.game.getPlayer().getPoints()} points.`, 'success');
+      this.logger.showMessage(
+        `🎉 You won! You ended with ${this.game.getPlayer().getPoints()} points.`,
+        'success'
+      );
     }
     if (!this.game.getPlayer().isAlive()) {
       this.logger.showMessage(TEXT_MESSAGE.died, 'error');
